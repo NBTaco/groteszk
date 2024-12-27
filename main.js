@@ -75,11 +75,13 @@ for(let i = 0; i < tomb.length; i++){ // végigmegyünk a tömbön, az i. objkek
     td3.innerHTML = tomb[i].mu //cella szövege a tomb i. objektumának mu tulajdosága
     tbodyr1.appendChild(td3) // hozzácsatoljuk a cellát az 1. sorhoz
 
-    const td4 = document.createElement('td') //létrehozzuk a 2. sor 1. celláját
-    td4.innerHTML = tomb[i].szerz2 //beállíjuk a cella szövegét a tomb i. objektumának szerz2 tulajdoságára
-    tbodyr2.appendChild(td4) // hozzácsatoljuk a cellát a 2. sorhoz
+    if(tomb[i].szerz2 && tomb[i].mu2){ //akkor megyönk be az elágazásba ha van szerz2 és mu2 
+        const td4 = document.createElement('td') //létrehozzuk a 2. sor 1. celláját
+        td4.innerHTML = tomb[i].szerz2 //beállíjuk a cella szövegét a tomb i. objektumának szerz2 tulajdoságára
+        tbodyr2.appendChild(td4) // hozzácsatoljuk a cellát a 2. sorhoz
 
-    const td5 = document.createElement('td') //létrehozzuk a 2. sor  2. celláját
-    td5.innerHTML = tomb[i].mu2 //beállíjuk a cella szövegéta tomb i. objektumának mu2 tulajdoságára
-    tbodyr2.appendChild(td5) // hozzácsatoljuk a cellát a 2. sorhoz
+        const td5 = document.createElement('td') //létrehozzuk a 2. sor  2. celláját
+        td5.innerHTML = tomb[i].mu2 //beállíjuk a cella szövegéta tomb i. objektumának mu2 tulajdoságára
+        tbodyr2.appendChild(td5) // hozzácsatoljuk a cellát a 2. sorhoz
+    }
 } 
