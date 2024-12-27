@@ -106,15 +106,66 @@ form.addEventListener('submit', function(e){ //a form submit eseményére teszek
     const szerz2V = szerz2HTML.value //a szerz2HTML eretekt belerakom a szerz2V változóba
     const mu2V = mu2HTML.value //a mu2HTML eretekt belerakom a mu2V változóba
 
-    const ujObj =  { //létrehozok egy uj objektumot
-        nemz: nemzV, //a nemz tulajdonsag erteke nemzV
-        szerz: szerz1V, //a szerz tulajdonsag erteke szerz1V
-        mu: mu1V, //a mu tulajdonsag erteke mu1V
-        szerz2: szerz2V, //a szerz2 tulajdonsag erteke szerz2V
-        mu2: mu2V //a mu2 tulajdonsag erteke mu2V
+    const errorszoveg = "A mező kiöltése kötelező!" //az errorszoveg valtozo "A mező kiöltése kötelező!"
+    const aktualis = e.currentTarget //az aktualis elemet kivesszuk egy valtozoba
+    const errorok = aktualis.querySelectorAll('.error') //az class errorokat kivesszuk egy valtozoba
+    let valid = true //a valid erteke alapvetoen true
+
+    for(const i of errorok){ //egy i vegigmegy az errorokon
+        i.innerHTML = "" //az osszes errort ""-re éllitjuk
     }
 
-    tomb.push(ujObj) //a tombbe berakom az uj objektumot
+    if(nemzV === ""){ //ha a nemzV üres akkor megyunk be
+        const parent = nemzHTML.parentElement //a parentet kivesszuk egy valtozoba
+        const error = parent.querySelector('.error') //az error a parent utani elso class error
+        if(error != ""){ //ha az error nem üres akkor megyunk be
+            error.innerHTML = errorszoveg //az errorhely szövege errorszoveg
+        }
+        valid = false //a valid értékét falsera állítjuk
+    }
+    if(szerz1V === ""){ //ha a szerz1V üres akkor megyunk be
+        const parent = szerz1HTML.parentElement //a parentet kivesszuk egy valtozoba
+        const error = parent.querySelector('.error') //az error a parent utani elso class error
+        if(error != ""){ //ha az error nem üres akkor megyunk be
+            error.innerHTML = errorszoveg //az errorhely szövege errorszoveg
+        }
+        valid = false //a valid értékét falsera állítjuk
+    }
+    if(mu1V === ""){ //ha a mu1V üres akkor megyunk be
+        const parent = mu1HTML.parentElement //a parentet kivesszuk egy valtozoba
+        const error = parent.querySelector('.error') //az error a parent utani elso class error
+        if(error != ""){ //ha az error nem üres akkor megyunk be
+            error.innerHTML = errorszoveg //az errorhely szövege errorszoveg
+        }
+        valid = false //a valid értékét falsera állítjuk
+    }
+    if(szerz2V === ""){ //ha a szerz2V üres akkor megyunk be
+        const parent = szerz2HTML.parentElement //a parentet kivesszuk egy valtozoba
+        const error = parent.querySelector('.error') //az error a parent utani elso class error
+        if(error != ""){ //ha az error nem üres akkor megyunk be
+            error.innerHTML = errorszoveg //az errorhely szövege errorszoveg
+        }
+        valid = false //a valid értékét falsera állítjuk
+    }
+    if(mu2V === ""){ //ha a mu2V üres akkor megyunk be
+        const parent = mu2HTML.parentElement //a parentet kivesszuk egy valtozoba
+        const error = parent.querySelector('.error') //az error a parent utani elso class error
+        if(error != ""){ //ha az error nem üres akkor megyunk be
+            error.innerHTML = errorszoveg //az errorhely szövege errorszoveg
+        }
+        valid = false //a valid értékét falsera állítjuk
+    }
+
+    if(valid){ //ha a valid true akkor megyunk be
+        const ujObj =  { //létrehozok egy uj objektumot
+            nemz: nemzV, //a nemz tulajdonsag erteke nemzV
+            szerz: szerz1V, //a szerz tulajdonsag erteke szerz1V
+            mu: mu1V, //a mu tulajdonsag erteke mu1V
+            szerz2: szerz2V, //a szerz2 tulajdonsag erteke szerz2V
+            mu2: mu2V //a mu2 tulajdonsag erteke mu2V
+        }
+        tomb.push(ujObj) //a tombbe berakom az uj objektumot
+    }
     table.innerHTML = "" //a table-t clearelem, hogy ne hozzágeneráljon az eddigi táblázathoz, hanem hogy legyen egy uj tablazat
     RenderTable() //meghivom a RenderTable függvényt
 })
