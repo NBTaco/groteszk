@@ -139,22 +139,6 @@ form.addEventListener('submit', function(e){ //a form submit eseményére teszek
         }
         valid = false //a valid értékét falsera állítjuk
     }
-    if(szerz2V === ""){ //ha a szerz2V üres akkor megyunk be
-        const parent = szerz2HTML.parentElement //a parentet kivesszuk egy valtozoba
-        const error = parent.querySelector('.error') //az error a parent utani elso class error
-        if(error != ""){ //ha az error nem üres akkor megyunk be
-            error.innerHTML = errorszoveg //az errorhely szövege errorszoveg
-        }
-        valid = false //a valid értékét falsera állítjuk
-    }
-    if(mu2V === ""){ //ha a mu2V üres akkor megyunk be
-        const parent = mu2HTML.parentElement //a parentet kivesszuk egy valtozoba
-        const error = parent.querySelector('.error') //az error a parent utani elso class error
-        if(error != ""){ //ha az error nem üres akkor megyunk be
-            error.innerHTML = errorszoveg //az errorhely szövege errorszoveg
-        }
-        valid = false //a valid értékét falsera állítjuk
-    }
 
     if(valid){ //ha a valid true akkor megyunk be
         const ujObj =  { //létrehozok egy uj objektumot
