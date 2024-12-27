@@ -81,7 +81,7 @@ r2td1.innerHTML = tomb[0].szerz2 //beállíjuk a cella szövegét (innerHTML-t) 
 tbodyr2.appendChild(r2td1) // hozzácsatoljuk a cellát a 2. sorhoz
 
 const r2td2 = document.createElement('td') //létrehozzuk a 2. sor 2. celláját , createElement: string
-r2td2.innerHTML = elsosor.mu2 //beállíjuk a cella szövegét (innerHTML-t) a tomb első objektumának mu2 tulajdoságára
+r2td2.innerHTML = tomb[0].mu2 //beállíjuk a cella szövegét (innerHTML-t) a tomb első objektumának mu2 tulajdoságára
 tbodyr2.appendChild(r2td2) // hozzácsatoljuk a cellát a 2. sorhoz
 
 // 2. sor
