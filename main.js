@@ -89,3 +89,32 @@ function RenderTable(){ //léterhozom a RenderTable függvény, ebben generáló
 }
 
 RenderTable() // meghivom a RenderTable függvényt
+
+const form = document.getElementById('form') //a formot a html rol kiveszem egy valtozoba getelementbyidval
+
+form.addEventListener('submit', function(e){ //a form submit eseményére teszek eseménykezelőt
+    e.preventDefault() //meggatolom az alapveto mukodest 
+    const nemzHTML = document.getElementById('szarmazas') //elkerem a html rol a szarmazas-t
+    const szerz1HTML = document.getElementById('szerzo1') //elkerem a html rol a szerzo1-et
+    const mu1HTML = document.getElementById('szerzo1mu') //elkerem a html rol a szerzo1mu-t
+    const szerz2HTML = document.getElementById('szerzo2') //elkerem a html rol a szerzo2-t
+    const mu2HTML = document.getElementById('szerzo2mu') //elkerem a html rol a szerzo2mu-t
+
+    const nemzV = nemzHTML.value //a nemzHTML eretekt belerakom a nemzV változóba
+    const szerz1V = szerz1HTML.value //a szerz1HTML eretekt belerakom a szerz1V változóba
+    const mu1V = mu1HTML.value //a mu1HTML eretekt belerakom a mu1V változóba
+    const szerz2V = szerz2HTML.value //a szerz2HTML eretekt belerakom a szerz2V változóba
+    const mu2V = mu2HTML.value //a mu2HTML eretekt belerakom a mu2V változóba
+
+    const ujObj =  { //létrehozok egy uj objektumot
+        nemz: nemzV, //a nemz tulajdonsag erteke nemzV
+        szerz: szerz1V, //a szerz tulajdonsag erteke szerz1V
+        mu: mu1V, //a mu tulajdonsag erteke mu1V
+        szerz2: szerz2V, //a szerz2 tulajdonsag erteke szerz2V
+        mu2: mu2V //a mu2 tulajdonsag erteke mu2V
+    }
+
+    tomb.push(ujObj) //a tombbe berakom az uj objektumot
+    table.innerHTML = "" //a table-t clearelem, hogy ne hozzágeneráljon az eddigi táblázathoz, hanem hogy legyen egy uj tablazat
+    RenderTable() //meghivom a RenderTable függvényt
+})
