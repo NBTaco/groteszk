@@ -4,33 +4,32 @@ const fejlec = { //letrehozzuk a fejlec objetumat
     mu: "Mű" //létrehozzuk a fejlec mu tulajdonságát
 }
 
-const elsosor = { //letrehozzuk az első sor objetumat
-    nemz: "Orosz", //létrehozzuk a elsosor nemz tulajdonságát
-    szerz: "Gogol", //létrehozzuk a elsosor szerz tulajdonságát
-    mu: "A köpönyeg", //létrehozzuk a elsosor mu tulajdonságát
-    szerz2: "Csehov", //létrehozzuk a elsosor szerz2 tulajdonságát
-    mu2: "A csinovnyik halála" //létrehozzuk a elsosor mu2 tulajdonságát
-}
-
-const masodiksor = { //letrehozzuk a második sor objetumat
-    nemz: "Cseh", //létrehozzuk a masodiksor nemz tulajdonságát
-    szerz: "Franz Kafka", //létrehozzuk a masodiksor szerz tulajdonságát
-    mu: "Az átváltozás" //létrehozzuk a masodiksor mu tulajdonságát
-}
-
-const harmadiksor = { //letrehozzuk a harmadik sor objetumat
-    nemz: "Magyar", //létrehozzuk a harmadiksor nemz tulajdonságát
-    szerz: "Örkény István", //létrehozzuk a harmadiksor szerz tulajdonságát
-    mu: "Egyperces Novellák", //létrehozzuk a harmadiksor mu tulajdonságát
-    szerz2: "József Attila", //létrehozzuk a harmadiksor szerz2 tulajdonságát
-    mu2: "Klárisok" //létrehozzuk a harmadiksor mu2 tulajdonságát
-}
-
-const negyediksor = { //letrehozzuk a negyedik sor objetumat
-    nemz: "Svájc", //létrehozzuk a negyediksor nemz tulajdonságát
-    szerz: "Friedrich Dürrenmatt", //létrehozzuk a negyediksor szerz tulajdonságát
-    mu: "A fizikusok" //létrehozzuk a negyediksor mu tulajdonságát
-}
+const tomb = [ //létrehozzuk a tombot az objektumoknak
+    {
+        nemz: "Orosz", //létrehozzuk a tomb elso objektumaának nemz tulajdonságát
+        szerz: "Gogol", //létrehozzuk a tomb elso objektumaának szerz tulajdonságát
+        mu: "A köpönyeg", //létrehozzuk a tomb elso objektumaának mu tulajdonságát
+        szerz2: "Csehov", //létrehozzuk a tomb elso objektumaának szerz2 tulajdonságát
+        mu2: "A csinovnyik halála" //létrehozzuk a tomb elso objektumaának mu2 tulajdonságát
+    },
+    { 
+        nemz: "Cseh", //létrehozzuk a tomb masodik objektumának nemz tulajdonságát
+        szerz: "Franz Kafka", //létrehozzuk a tomb masodik objektumának szerz tulajdonságát
+        mu: "Az átváltozás" //létrehozzuk a tomb masodik objektumának mu tulajdonságát
+    },
+    { 
+        nemz: "Magyar", //létrehozzuk a tomb harmadik objektumának nemz tulajdonságát
+        szerz: "Örkény István", //létrehozzuk a tomb harmadik objektumának szerz tulajdonságát
+        mu: "Egyperces Novellák", //létrehozzuk a tomb harmadik objektumának mu tulajdonságát
+        szerz2: "József Attila", //létrehozzuk a tomb harmadik objektumának szerz2 tulajdonságát
+        mu2: "Klárisok" //létrehozzuk a tomb harmadik objektumának mu2 tulajdonságát
+    },
+    { 
+        nemz: "Svájc", //létrehozzuk a tomb negyedik objektumának nemz tulajdonságát
+        szerz: "Friedrich Dürrenmatt", //létrehozzuk a tomb negyedik objektumának szerz tulajdonságát
+        mu: "A fizikusok" //létrehozzuk a tomb negyedik objektumának mu tulajdonságát
+    }
+]
 
 const table = document.createElement('table') // Létrehozzuk a table- elemet, createElement: string
 document.body.appendChild(table) //a table elemet hozzácsatoljuk a body- hoz
@@ -66,23 +65,23 @@ tbody.appendChild(tbodyr2) //az 2. sort hozzácsatoljuk a tbody- hoz
 
 const r1td1 = document.createElement('td') //létrehozzuk az 1. sor 1. celláját , createElement: string
 r1td1.rowSpan = 2 //beállítjuk a rowSpant a cellára
-r1td1.innerHTML = elsosor.nemz //beállíjuk a cella szövegét (innerHTML-t) a elsosor objektum nemz tulajdosága
+r1td1.innerHTML = tomb[0].nemz //beállíjuk a cella szövegét (innerHTML-t) a tomb első objektumának nemz tulajdosága
 tbodyr1.appendChild(r1td1) // hozzácsatoljuk a cellát az 1. sorhoz
 
 const r1td2 = document.createElement('td') //létrehozzuk az 1. sor 2. celláját , createElement: string
-r1td2.innerHTML = elsosor.szerz //cella szövege elsosor objektum szerz tulajdosága
+r1td2.innerHTML = tomb[0].szerz //cella szövege a tomb első objektumának szerz tulajdosága
 tbodyr1.appendChild(r1td2) // hozzácsatoljuk a cellát az 1. sorhoz
 
 const r1td3 = document.createElement('td') //létrehozzuk az 1. sor 3. celláját , createElement: string
-r1td3.innerHTML = elsosor.mu //cella szövege az elsosor objektum mu tulajdosága
+r1td3.innerHTML = tomb[0].mu //cella szövege a tomb első objektumának mu tulajdosága
 tbodyr1.appendChild(r1td3) // hozzácsatoljuk a cellát az 1. sorhoz
 
 const r2td1 = document.createElement('td') //létrehozzuk a 2. sor 1. celláját , createElement: string
-r2td1.innerHTML = elsosor.szerz2 //beállíjuk a cella szövegét (innerHTML-t) az elsosor objektum szerz2 tulajdoságára
+r2td1.innerHTML = tomb[0].szerz2 //beállíjuk a cella szövegét (innerHTML-t) a tomb első objektumának szerz2 tulajdoságára
 tbodyr2.appendChild(r2td1) // hozzácsatoljuk a cellát a 2. sorhoz
 
 const r2td2 = document.createElement('td') //létrehozzuk a 2. sor 2. celláját , createElement: string
-r2td2.innerHTML = elsosor.mu2 //beállíjuk a cella szövegét (innerHTML-t) az elsosor objektum mu2 tulajdoságára
+r2td2.innerHTML = elsosor.mu2 //beállíjuk a cella szövegét (innerHTML-t) a tomb első objektumának mu2 tulajdoságára
 tbodyr2.appendChild(r2td2) // hozzácsatoljuk a cellát a 2. sorhoz
 
 // 2. sor
@@ -90,15 +89,15 @@ const tbodyr3 = document.createElement('tr') //létrehozzuk a tbody 3. sorát , 
 tbody.appendChild(tbodyr3) //a 3. sort  hozzácsatoljuk a tbody- hoz
 
 const r3td1 = document.createElement('td') //létrehozzuk az 3. sor 1. celláját , createElement: string
-r3td1.innerHTML = masodiksor.nemz //cella szövege a masodiksor objektum nemz tulajdosága
+r3td1.innerHTML = tomb[1].nemz //cella szövege a tomb masodik objektumának nemz tulajdosága
 tbodyr3.appendChild(r3td1) // hozzácsatoljuk a cellát a 3. sorhoz
 
 const r3td2 = document.createElement('td') //létrehozzuk a 3. sor 2. celláját , createElement: string
-r3td2.innerHTML = masodiksor.szerz //cella szövege a masodiksor objektum szerz tulajdosága
+r3td2.innerHTML = tomb[1].szerz //cella szövege a tomb masodik objektumának szerz tulajdosága
 tbodyr3.appendChild(r3td2) // hozzácsatoljuk a cellát a 3. sorhoz
 
 const r3td3 = document.createElement('td') //létrehozzuk a 3. sor 3. celláját , createElement: string
-r3td3.innerHTML = masodiksor.mu //cella szövege a masodiksor objektum mu tulajdosága
+r3td3.innerHTML = tomb[1].mu //cella szövege a tomb masodik objektumának mu tulajdosága
 tbodyr3.appendChild(r3td3) // hozzácsatoljuk a cellát a 3. sorhoz
 
 // 3. sor
@@ -110,23 +109,23 @@ tbody.appendChild(tbodyr5)  //a 5. sort  hozzácsatoljuk a tbody- hoz
 
 const r4td1 = document.createElement('td') //létrehozzuk az 4. sor 1. celláját , createElement: string
 r4td1.rowSpan= 2 //beállítjuk a rowSpant a cellára
-r4td1.innerHTML = harmadiksor.nemz //cella szövege a harmadiksor objektum nemz tulajdosága
+r4td1.innerHTML = tomb[2].nemz //cella szövege a tomb harmadik objektumának nemz tulajdosága
 tbodyr4.appendChild(r4td1) // hozzácsatoljuk a cellát az 4. sorhoz
 
 const r4td2 = document.createElement('td') //létrehozzuk az 4. sor 2. celláját , createElement: string
-r4td2.innerHTML = harmadiksor.szerz //cella szövege a harmadiksor objektum szerz tulajdosága
+r4td2.innerHTML = tomb[2].szerz //cella szövege a tomb harmadik objektumának szerz tulajdosága
 tbodyr4.appendChild(r4td2) // hozzácsatoljuk a cellát az 4. sorhoz
 
 const r4td3 = document.createElement('td') //létrehozzuk az 4. sor 2. celláját , createElement: string
-r4td3.innerHTML = harmadiksor.mu //cella szövege a harmadiksor objektum mu tulajdosága
+r4td3.innerHTML = tomb[2].mu //cella szövege a tomb harmadik objektumának mu tulajdosága
 tbodyr4.appendChild(r4td3) // hozzácsatoljuk a cellát az 4. sorhoz
 
 const r5td1 = document.createElement('td') //létrehozzuk a 5. sor 1. celláját , createElement: string
-r5td1.innerHTML = harmadiksor.szerz2 //cella szövege a harmadiksor objektum szerz2 tulajdosága
+r5td1.innerHTML = tomb[2].szerz2 //cella szövege a tomb harmadik objektumának szerz2 tulajdosága
 tbodyr5.appendChild(r5td1)// hozzácsatoljuk a cellát a 5. sorhoz
 
 const r5td2 = document.createElement('td') //létrehozzuk a 5. sor 2. celláját , createElement: string
-r5td2.innerHTML = harmadiksor.mu2 //cella szövege a harmadiksor objektum mu2 tulajdosága
+r5td2.innerHTML = tomb[2].mu2 //cella szövege a tomb harmadik objektumának mu2 tulajdosága
 tbodyr5.appendChild(r5td2) // hozzácsatoljuk a cellát a 5. sorhoz
 
 //4.sor
@@ -134,13 +133,13 @@ const tbodyr6 = document.createElement('tr') //létrehozzuk a tbody 6. sorát, c
 tbody.appendChild(tbodyr6) //a 6. sort  hozzácsatoljuk a tbody- hoz
 
 const r6td1 = document.createElement('td') //létrehozzuk a 6. sor 1. celláját , createElement: string
-r6td1.innerHTML = negyediksor.nemz //cella szövege a negyediksor objektum nemz tulajdosága
+r6td1.innerHTML = tomb[3].nemz //cella szövege a tomb negyedik objektumának nemz tulajdosága
 tbodyr6.appendChild(r6td1) // hozzácsatoljuk a cellát a 6. sorhoz
 
 const r6td2 = document.createElement('td') //létrehozzuk a 6. sor 2. celláját , createElement: string
-r6td2.innerHTML = negyediksor.szerz //cella szövege a negyediksor objektum szerz tulajdosága
+r6td2.innerHTML = tomb[3].szerz //cella szövege a tomb negyedik objektumának szerz tulajdosága
 tbodyr6.appendChild(r6td2) // hozzácsatoljuk a cellát a 6. sorhoz
 
 const r6td3 = document.createElement('td') //létrehozzuk a 6. sor 3. celláját , createElement: string
-r6td3.innerHTML = negyediksor.mu //cella szövege a negyediksor objektum mu tulajdosága
+r6td3.innerHTML = tomb[3].mu //cella szövege a tomb negyedik objektumának mu tulajdosnága
 tbodyr6.appendChild(r6td3) // hozzácsatoljuk a cellát a 6. sorhoz
