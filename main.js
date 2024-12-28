@@ -103,6 +103,18 @@ function validacio(elem, errorsz){ //letrehozzuk a validacio fuggvenyt
     return valid //a valid ertekevel terunk vissza
 }
 
+function kettovalidacio(elsoelem, masodikelem, errorsz){  //letrehozom a kettovalidacio fuggvenyt
+    let valid = true //a valid alap erteke true
+    if(elsoelem.value != "" && !validacio(masodikelem, errorsz)){ //ha az elsoelem nem ures, es a masodikeleme validacioja false akkor megyunk be
+        valid =false //a validot falsera allitom
+    }
+    if(masodikelem.value != "" && !validacio(elsoelem, errorsz)){ //ha az masodikelem nem ures, es a elsoelem validacioja false akkor megyunk be
+        valid =false //a validot falsera allitom
+    }
+    return valid //a valid ertekevel terunk vissza
+}   
+
+
 const form = document.getElementById('form') //a formot a html rol kiveszem egy valtozoba getelementbyidval
 
 form.addEventListener('submit', function(e){ //a form submit eseményére teszek eseménykezelőt
@@ -140,12 +152,8 @@ form.addEventListener('submit', function(e){ //a form submit eseményére teszek
         valid = false // a validot falsera allitjuk
     }
 
-    if(szerz2V != "" && !validacio(mu2HTML, errorszoveg)){ //ha a szerz2V nem ures de a mu2HTML validacioja falseal ter vissza akor megyunk be
-        valid = false // a valid erteke false
-    }
-
-    if(mu2V != "" && !validacio(szerz2HTML, errorszoveg)){ //ha a mu2V nem ures de a szerz2HTML validacioja falseal ter vissza akor megyunk be
-        valid = false // a valid erteke false
+    if(!kettovalidacio(szerz2HTML, mu2HTML, errorszoveg)){ //meghivom a kettovalidacio fuggvenyt a  szerz2HTML és a mu2HTML elemekre, ha false akkor megyunk be
+        valid = false // a validot falsera allitjuk
     }
 
     if(valid){ //ha a valid true akkor megyunk be
