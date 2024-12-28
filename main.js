@@ -90,6 +90,19 @@ function RenderTable(){ //léterhozom a RenderTable függvény, ebben generáló
 
 RenderTable() // meghivom a RenderTable függvényt
 
+function validacio(elem, errorsz){ //letrehozzuk a validacio fuggvenyt
+    let valid = true //a valid alap erteke true
+    if(elem.value === ""){  //akkor megyunk be ha az elem parameter ures
+        const parent = elem.parentElement //kivesszuk a prentet egy valtozoba
+        const error = parent.querySelector(".error") //kivesszuk a class errort egy valtozoba
+        if(error != ""){  //ha az error nem ures akkor megyunk be
+            error.innerHTML = errorsz //az error szovege az errorsz parameter lesz
+        }
+        valid = false //a valid erteket falsera allitjuk
+    }
+    return valid //a valid ertekevel terunk vissza
+}
+
 const form = document.getElementById('form') //a formot a html rol kiveszem egy valtozoba getelementbyidval
 
 form.addEventListener('submit', function(e){ //a form submit eseményére teszek eseménykezelőt
@@ -111,33 +124,20 @@ form.addEventListener('submit', function(e){ //a form submit eseményére teszek
     const errorok = aktualis.querySelectorAll('.error') //az class errorokat kivesszuk egy valtozoba
     let valid = true //a valid erteke alapvetoen true
 
-    for(const i of errorok){ //egy i vegigmegy az errorokon
+    for(const i of errorok){ //vegigitaralunk az errorok on
         i.innerHTML = "" //az osszes errort ""-re éllitjuk
     }
 
-    if(nemzV === ""){ //ha a nemzV üres akkor megyunk be
-        const parent = nemzHTML.parentElement //a parentet kivesszuk egy valtozoba
-        const error = parent.querySelector('.error') //az error a parent utani elso class error
-        if(error != ""){ //ha az error nem üres akkor megyunk be
-            error.innerHTML = errorszoveg //az errorhely szövege errorszoveg
-        }
-        valid = false //a valid értékét falsera állítjuk
+    if(!validacio(nemzHTML, errorszoveg)){  //ha a validacio falseal ter vissza akkor megyunk be
+        valid = false // a validot falsera allitjuk
     }
-    if(szerz1V === ""){ //ha a szerz1V üres akkor megyunk be
-        const parent = szerz1HTML.parentElement //a parentet kivesszuk egy valtozoba
-        const error = parent.querySelector('.error') //az error a parent utani elso class error
-        if(error != ""){ //ha az error nem üres akkor megyunk be
-            error.innerHTML = errorszoveg //az errorhely szövege errorszoveg
-        }
-        valid = false //a valid értékét falsera állítjuk
+
+    if(!validacio(szerz1HTML, errorszoveg)){  //ha a validacio falseal ter vissza akkor megyunk be
+        valid = false // a validot falsera allitjuk
     }
-    if(mu1V === ""){ //ha a mu1V üres akkor megyunk be
-        const parent = mu1HTML.parentElement //a parentet kivesszuk egy valtozoba
-        const error = parent.querySelector('.error') //az error a parent utani elso class error
-        if(error != ""){ //ha az error nem üres akkor megyunk be
-            error.innerHTML = errorszoveg //az errorhely szövege errorszoveg
-        }
-        valid = false //a valid értékét falsera állítjuk
+
+    if(!validacio(mu1HTML, errorszoveg)){  //ha a validacio falseal ter vissza akkor megyunk be
+        valid = false // a validot falsera allitjuk
     }
 
     if(valid){ //ha a valid true akkor megyunk be
