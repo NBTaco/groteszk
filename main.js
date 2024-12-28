@@ -34,8 +34,8 @@ const tomb = [ //létrehozzuk a tombot az objektumoknak
 const table = document.createElement('table') // Létrehozzuk a table- elemet, createElement: string
 document.body.appendChild(table) //a table elemet hozzácsatoljuk a body- hoz
 
-function RenderTable(){ //léterhozom a RenderTable függvény, ebben generálódik a táblázat
-    fejlecGeneralas() //megivom a fejlecGeneralas fuggvenyt
+function RenderTable(array){ //léterhozom a RenderTable függvény, ebben generálódik a táblázat, a tablazat az array paraméter alapján generalodik
+    fejlecGeneralas(fejlec) //megivom a fejlecGeneralas fuggvenyt a fejlec objektum paraméerrel
 
     for(let i = 0; i < tomb.length; i++){ // végigmegyünk a tömbön, az i. objkektummal dolgozunk mindig
         const tbody = document.createElement('tbody') //létrehozunk egy tbody- elemet, createElement: string
@@ -47,31 +47,45 @@ function RenderTable(){ //léterhozom a RenderTable függvény, ebben generáló
         const tbodyr2 = document.createElement('tr') //létrehozunk mégegy sort
         tbody.appendChild(tbodyr2) //az 2. sort hozzácsatoljuk a tbody- hoz
 
-        const td1 = document.createElement('td') //létrehozzuk az első sor 1. celláját
-        td1.rowSpan = 2 //beállítjuk a rowSpant a cellára
-        td1.innerHTML = tomb[i].nemz //beállíjuk a cella szövegét a tomb i. objektumának nemz tulajdoságára
-        tbodyr1.appendChild(td1) // hozzácsatoljuk a cellát az 1. sorhoz
+        const aktualis = array[i] //az aktualis  objektumot kivesszuk egy valtozoba
+        let index = 0 //az index alapveto erteke 0
 
-        const td2 = document.createElement('td') //létrehozzuk az első sor 2. celláját
-        td2.innerHTML = tomb[i].szerz //cella szövege a tomb i. objektumának szerz tulajdosága
-        tbodyr1.appendChild(td2) // hozzácsatoljuk a cellát az 1. sorhoz
+        for(const j in aktualis){ //vegigmegyunk az aktualis objektum tulajdonságain
+            if(index === 0){ // haz az index 0 akkor megyunk be
+                const td1 = document.createElement('td') //létrehozzuk az első sor 1. celláját
+                td1.innerHTML = aktualis[j] //beállíjuk a cella szövegét a z aktualis objektum j. tulajdonságaára
+                td1.rowSpan = 2 //beállítjuk a rowSpant a cellára
+                tbodyr1.appendChild(td1) // hozzácsatoljuk a cellát az 1. sorhoz
+            }
 
-        const td3 = document.createElement('td') //létrehozzuk az első sor 3. celláját
-        td3.innerHTML = tomb[i].mu //cella szövege a tomb i. objektumának mu tulajdosága
-        tbodyr1.appendChild(td3) // hozzácsatoljuk a cellát az 1. sorhoz
+            if(index === 1){ // ha az index 1 akkor megyunk be
+                const td2 = document.createElement('td') //létrehozzuk az első sor 2. celláját
+                td2.innerHTML = aktualis[j] //cella szövege a tomb i. objektumának szerz tulajdosága
+                tbodyr1.appendChild(td2) // hozzácsatoljuk a cellát az 1. sorhoz
+            }
 
-        if(tomb[i].szerz2 && tomb[i].mu2){ //akkor megyönk be az elágazásba ha van szerz2 és mu2 
-            const td4 = document.createElement('td') //létrehozzuk a 2. sor 1. celláját
-            td4.innerHTML = tomb[i].szerz2 //beállíjuk a cella szövegét a tomb i. objektumának szerz2 tulajdoságára
-            tbodyr2.appendChild(td4) // hozzácsatoljuk a cellát a 2. sorhoz
+            if(index === 2){ // ha az index 2 akkor megyunk be
+                const td3 = document.createElement('td') //létrehozzuk az első sor 3. celláját
+                td3.innerHTML = aktualis[j] //beállíjuk a cella szövegét a z aktualis objektum j. tulajdonságaára
+                tbodyr1.appendChild(td3) // hozzácsatoljuk a cellát az 1. sorhoz
+            }
 
-            const td5 = document.createElement('td') //létrehozzuk a 2. sor  2. celláját
-            td5.innerHTML = tomb[i].mu2 //beállíjuk a cella szövegéta tomb i. objektumának mu2 tulajdoságára
-            tbodyr2.appendChild(td5) // hozzácsatoljuk a cellát a 2. sorhoz
+            if(index === 3){ // ha az index 3 akkor megyunk be
+                const td4 = document.createElement('td') //létrehozzuk a 2. sor 1. celláját
+                td4.innerHTML = aktualis[j] //beállíjuk a cella szövegét a z aktualis objektum j. tulajdonságaára
+                tbodyr2.appendChild(td4) // hozzácsatoljuk a cellát a 2. sorhoz
+            }
+
+            if(index === 4){ // ha az index 4 akkor megyunk be
+                const td5 = document.createElement('td') //létrehozzuk a 2. sor  2. celláját
+                td5.innerHTML = aktualis[j] //beállíjuk a cella szövegét a z aktualis objektum j. tulajdonságaára
+                tbodyr2.appendChild(td5) // hozzácsatoljuk a cellát a 2. sorhoz
+            }
+            index++ //növeljuk az indexet 1-el
         }
     } 
 }
-RenderTable() // meghivom a RenderTable függvényt
+RenderTable(tomb) // meghivom a RenderTable függvényt tomb paraméterrel
 
 function validacio(elem, errorsz){ //letrehozzuk a validacio fuggvenyt
     let valid = true //a valid alap erteke true
@@ -97,16 +111,16 @@ function kettovalidacio(elsoelem, masodikelem, errorsz){  //letrehozom a kettova
     return valid //a valid ertekevel terunk vissza
 }   
 
-function fejlecGeneralas(){ //letrehozom a fejlecGeneralas fuggvenyt
+function fejlecGeneralas(objektum){ //letrehozom a fejlecGeneralas fuggvenyt, paramétere egy objektum, ami alapján generál
     const thead = document.createElement('thead') //létrehozunk egy thead- elemet
     table.appendChild(thead) //a thead elemet hozzácsatoljuk a table- hez
 
     const theadr = document.createElement('tr') //létrehozunk egy tr- elemet
     thead.appendChild(theadr) //a tr elemet hozzácsatoljuk a thead- hez
 
-    for(const i in fejlec){ //vegigiteraliunk a fejlec objektum tulajdonsagain
+    for(const i in objektum){ //vegigiteraliunk az objektum tulajdonsagain
         const theadc = document.createElement('th') //létrehozunk egy th- elemet, createElement: string
-        theadc.innerHTML = fejlec[i] //a létrehozot th- nek beállítjuk a szövegét(innerHTML-t) a fejlec obj i. tulajdonsága
+        theadc.innerHTML = objektum[i] //a létrehozot th- nek beállítjuk a szövegét(innerHTML-t) az objektum i. tulajdonsága
         theadr.appendChild(theadc) //a th elemet hozzácsatoljuk a tr- hez (theadr)
     }
  
@@ -174,5 +188,5 @@ form.addEventListener('submit', function(e){ //a form submit eseményére teszek
         }
     }
     table.innerHTML = "" //a table-t clearelem, hogy ne hozzágeneráljon az eddigi táblázathoz, hanem hogy legyen egy uj tablazat
-    RenderTable() //meghivom a RenderTable függvényt
+    RenderTable(tomb) //meghivom a RenderTable függvényt tomb paraméterrel
 })
