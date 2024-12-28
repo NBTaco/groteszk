@@ -35,28 +35,12 @@ const table = document.createElement('table') // Létrehozzuk a table- elemet, c
 document.body.appendChild(table) //a table elemet hozzácsatoljuk a body- hoz
 
 function RenderTable(){ //léterhozom a RenderTable függvény, ebben generálódik a táblázat
-    const thead = document.createElement('thead') //létrehozunk egy thead- elemet createElement: string
-    table.appendChild(thead) //a thead elemet hozzácsatoljuk a table- hez
-
-    const theadr1 = document.createElement('tr') //létrehozunk egy tr- elemet, createElement: string
-    thead.appendChild(theadr1) //a tr elemet hozzácsatoljuk a thead- hez
-
-    const theadc1 = document.createElement('th') //létrehozunk egy th- elemet, createElement: string
-    theadc1.innerHTML = fejlec.nemz //a létrehozot th- nek beállítjuk a szövegét(innerHTML-t) a fejlec objektum nemz tulajdoságára
-    theadr1.appendChild(theadc1) //a th elemet hozzácsatoljuk a tr- hez (theadr1)
- 
-    const theadc2 = document.createElement('th') //létrehozunk egy th- elemet, createElement: string
-    theadc2.innerHTML = fejlec.szerz //a létrehozot th- nek beállítjuk a szövegét(innerHTML-t) a fejlec objektum szerz tulajdoságára
-    theadr1.appendChild(theadc2) //a th elemet hozzácsatoljuk a tr- hez (theadr1)
-
-    const theadc3 = document.createElement('th') //létrehozunk egy th- elemet, createElement: string
-    theadc3.innerHTML = fejlec.mu //a létrehozot th- nek beállítjuk a szövegét(innerHTML-t) a fejlec objektum mu tulajdoságára
-    theadr1.appendChild(theadc3) //a th elemet hozzácsatoljuk a tr- hez (theadr1)
-
-    const tbody = document.createElement('tbody') //létrehozunk egy tbody- elemet, createElement: string
-    table.appendChild(tbody) //a tbody- elemet hozzácsatoljuk a table- hez
+    fejlecGeneralas() //megivom a fejlecGeneralas fuggvenyt
 
     for(let i = 0; i < tomb.length; i++){ // végigmegyünk a tömbön, az i. objkektummal dolgozunk mindig
+        const tbody = document.createElement('tbody') //létrehozunk egy tbody- elemet, createElement: string
+        table.appendChild(tbody) //a tbody- elemet hozzácsatoljuk a table- hez
+
         const tbodyr1 = document.createElement('tr') //létrehozunk egy sort
         tbody.appendChild(tbodyr1) //az 1. sort hozzácsatoljuk a tbody- hoz
 
@@ -87,7 +71,6 @@ function RenderTable(){ //léterhozom a RenderTable függvény, ebben generáló
         }
     } 
 }
-
 RenderTable() // meghivom a RenderTable függvényt
 
 function validacio(elem, errorsz){ //letrehozzuk a validacio fuggvenyt
@@ -114,6 +97,20 @@ function kettovalidacio(elsoelem, masodikelem, errorsz){  //letrehozom a kettova
     return valid //a valid ertekevel terunk vissza
 }   
 
+function fejlecGeneralas(){ //letrehozom a fejlecGeneralas fuggvenyt
+    const thead = document.createElement('thead') //létrehozunk egy thead- elemet
+    table.appendChild(thead) //a thead elemet hozzácsatoljuk a table- hez
+
+    const theadr = document.createElement('tr') //létrehozunk egy tr- elemet
+    thead.appendChild(theadr) //a tr elemet hozzácsatoljuk a thead- hez
+
+    for(const i in fejlec){ //vegigiteraliunk a fejlec objektum tulajdonsagain
+        const theadc = document.createElement('th') //létrehozunk egy th- elemet, createElement: string
+        theadc.innerHTML = fejlec[i] //a létrehozot th- nek beállítjuk a szövegét(innerHTML-t) a fejlec obj i. tulajdonsága
+        theadr.appendChild(theadc) //a th elemet hozzácsatoljuk a tr- hez (theadr)
+    }
+ 
+}
 
 const form = document.getElementById('form') //a formot a html rol kiveszem egy valtozoba getelementbyidval
 
