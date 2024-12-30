@@ -59,6 +59,12 @@ formGeneralas()//meghivom a formGeneralas fuggvenyt
 const table = document.createElement('table') // Létrehozzuk a table- elemet, createElement: string
 document.body.appendChild(table) //a table elemet hozzácsatoljuk a body- hoz
 
+/**
+ * a függvény véggmegy egy tömbön, ami a megadott paraméter, majd a tömb objektumai alapján létrehoz egy táblázatot, 
+ * a fejlecet a fejlecGeneralas függvény használatával csinálja
+ * 
+ * @param {Array} array //a tömb neve
+ */
 function RenderTable(array){ //léterhozom a RenderTable függvény, ebben generálódik a táblázat, a tablazat az array paraméter alapján generalodik
     fejlecGeneralas(fejlec) //megivom a fejlecGeneralas fuggvenyt a fejlec objektum paraméerrel
 
@@ -112,6 +118,14 @@ function RenderTable(array){ //léterhozom a RenderTable függvény, ebben gener
 }
 RenderTable(tomb) // meghivom a RenderTable függvényt tomb paraméterrel
 
+/**
+ * //a függvény egy validáviós függvény, amely úgy működik, hogy az első paraméter egy HTML elem, amelynek megnézi hogy van e szövege,
+ *  ha nincs akkor kírja az errorsz paraméternek megadott szöveget
+ * 
+ * @param {HTMLElement} elem //a validálni kívánt html elem
+ * @param {string} errorsz  //az error szövege
+ * @returns True ha van szövege az elemnek , False ha nincs
+ */
 function validacio(elem, errorsz){ //letrehozzuk a validacio fuggvenyt
     let valid = true //a valid alap erteke true
     if(elem.value === ""){  //akkor megyunk be ha az elem parameter ures
@@ -125,6 +139,15 @@ function validacio(elem, errorsz){ //letrehozzuk a validacio fuggvenyt
     return valid //a valid ertekevel terunk vissza
 }
 
+/**
+ * A függvény arra szolgál, hogy két elemet mér össze (elsoelem, masodikelem), ha mindkettő üres akkor nem csinál semmit, 
+ * de amennyiben csak az egyik üres akkor a másikhoz kiírja az errorsz paraméternek megadott szövegetm a függvényben használva van a validacio() függvény
+ * 
+ * @param {HTMLElement} elsoelem 
+ * @param {HTMLElement} masodikelem 
+ * @param {string} errorsz 
+ * @returns True, ha átmegy , False ha nem
+ */
 function kettovalidacio(elsoelem, masodikelem, errorsz){  //letrehozom a kettovalidacio fuggvenyt
     let valid = true //a valid alap erteke true
     if(elsoelem.value != "" && !validacio(masodikelem, errorsz)){ //ha az elsoelem nem ures, es a masodikeleme validacioja false akkor megyunk be
@@ -136,6 +159,11 @@ function kettovalidacio(elsoelem, masodikelem, errorsz){  //letrehozom a kettova
     return valid //a valid ertekevel terunk vissza
 }   
 
+/**
+ * //a függvény azt csinálja, hogy a megadott paraméter (objektum) en végigmegy, és annak mintájáralétrehozza a táblázat fejlécét
+ * 
+ * @param {Object} objektum //a fejlec tulajdonságait tároló objektum
+ */
 function fejlecGeneralas(objektum){ //letrehozom a fejlecGeneralas fuggvenyt, paramétere egy objektum, ami alapján generál
     const thead = document.createElement('thead') //létrehozunk egy thead- elemet
     table.appendChild(thead) //a thead elemet hozzácsatoljuk a table- hez
@@ -152,6 +180,9 @@ function fejlecGeneralas(objektum){ //letrehozom a fejlecGeneralas fuggvenyt, pa
 }
 const form = document.getElementById('form') //a formot a html rol kiveszem egy valtozoba getelementbyidval
 
+/**
+ * a függvény a formt tömb alapján létrehoz egy formot a HTML-en
+ */
 function formGeneralas(){ //letrehozom a formGeneralas fuggvenyt
     const form = document.createElement('form') //letrehozom a formot egy form valtozoval
     document.body.appendChild(form) //a body-hoz hozzáadom a formot
