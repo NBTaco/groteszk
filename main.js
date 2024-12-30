@@ -31,6 +31,31 @@ const tomb = [ //létrehozzuk a tombot az objektumoknak
     }
 ]
 
+const formt = [ //létrehozzuk a tombot a formnak
+    {
+        label: "Származás:", //létrehozzuk a tomb elso objektumaának label tulajdonságát
+        id: "szarmazas", //létrehozzuk a tomb elso objektumaának id tulajdonságát
+    },
+    {
+        label: "1. szerző:", //létrehozzuk a tomb masodik objektumaának label tulajdonságát
+        id: "szerzo1", //létrehozzuk a tomb masodik objektumaának id tulajdonságát
+    },
+    {
+        label: "1. szerző műve:", //létrehozzuk a tomb harmadik objektumaának label tulajdonságát
+        id: "szerzo1mu", //létrehozzuk a tomb harmadik objektumaának id tulajdonságát
+    },
+    {
+        label: "2. szerző:", //létrehozzuk a tomb negyedik objektumaának label tulajdonságát
+        id: "szerzo2", //létrehozzuk a tomb negyedik objektumaának id tulajdonságát
+    },
+    {
+        label: "2. szerző műve:", //létrehozzuk a tomb otodik objektumaának label tulajdonságát
+        id: "szerzo2mu", //létrehozzuk a tomb otodik objektumaának id tulajdonságát
+    }
+]
+
+formGeneralas()//meghivom a formGeneralas fuggvenyt
+
 const table = document.createElement('table') // Létrehozzuk a table- elemet, createElement: string
 document.body.appendChild(table) //a table elemet hozzácsatoljuk a body- hoz
 
@@ -125,8 +150,48 @@ function fejlecGeneralas(objektum){ //letrehozom a fejlecGeneralas fuggvenyt, pa
     }
  
 }
-
 const form = document.getElementById('form') //a formot a html rol kiveszem egy valtozoba getelementbyidval
+
+function formGeneralas(){ //letrehozom a formGeneralas fuggvenyt
+    const form = document.createElement('form') //letrehozom a formot egy form valtozoval
+    document.body.appendChild(form) //a body-hoz hozzáadom a formot
+    form.id = "form" //a form id-ja "form"
+    form.action = "#" //a form action-je "#"
+    for(let i = 0; i < formt.length; i++ ){ //végigmegyönk a formt tömbön és a form tömb mindegyik objektumával megcsináljuk ->
+        const div =  document.createElement('div') //létrehozunk egy div elemet 
+        form.appendChild(div) //a divet hozzáadjuk a formhoz
+
+        const label = document.createElement('label') // létrehozunk egy labelt
+        div.appendChild(label) //a labelt hozzáadjuk a divhez
+        label.innerHTML = formt[i].label //a label innerHTML-je a formt aktualis objektumának label tulajdonsága
+
+        const br = document.createElement('br') //létrehozunk egy br-t 
+        div.appendChild(br) //a brt hozzáadjuk a divhez
+
+        const input = document.createElement('input') //létrehozunk egy input mezőt
+        div.appendChild(input)  //a input mezőt hozzáadjuk a divhez
+        input.type = "text" //az input typeja "text"
+        input.id = formt[i].id //az input idja formt aktualis objektumának id tulajdonsága
+        input.name = formt[i].id //az input name-e formt aktualis objektumának id tulajdonsága
+
+        const br2 = document.createElement('br') //létrehpzunk megegy brt
+        div.appendChild(br2) //a brt hozzáadjuk a divhez
+
+        const span = document.createElement('span') //létrehozunk egy spant az errornak
+        div.appendChild(span) //a divhez hozzáadjkuk a spant
+        span.className = "error" //a span class-a error
+        
+        const br3 = document.createElement('br') //létrehozunk mégegy br-t
+        div.appendChild(br3) //a br-t hozzáadjuk a divhez
+
+    }
+    const button = document.createElement('button') //létrehozunk egy gombot
+    button.innerHTML = "Hozzáadás" //a gomb szövege hozzáadás
+    form.appendChild(button) //a formhoz houuáadjuk a gombot
+
+}
+
+
 
 form.addEventListener('submit', function(e){ //a form submit eseményére teszek eseménykezelőt
     e.preventDefault() //meggatolom az alapveto mukodest 
