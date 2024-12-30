@@ -7,5 +7,21 @@ table{
 }
 
 .error{
-    color: red;
+    color: #ff0000;
+}
+
+tbody tr:nth-child(1) td:first-child{
+    background-color: green;
+}
+
+tbody tr:nth-child(1) td:last-child{
+    background-color: green;
+}
+
+tbody tr:nth-child(2) td:last-child {
+    background-color: green;
+}
+
+thead th:nth-child(2) {
+    background-color: lightgreen;
 }
